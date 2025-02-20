@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Forest Initiative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-left: 5px solid #0288d1;
+        }
+        label, select, button {
+            display: block;
+            margin: 10px 0;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            background: #dff0d8;
+            border-left: 5px solid #3c763d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Forest Initiative</h1>
+        <p>Empowering communities worldwide to create and maintain self-sustaining food forests.</p><div class="section">
+        <h2>What is a Food Forest?</h2>
+        <p>A food forest is a self-sustaining ecosystem designed for long-term food production, inspired by natural forests. It integrates trees, shrubs, and plants to create a regenerative and biodiverse food system.</p>
+    </div>
+
+    <div class="section">
+        <h2>How to Start Your Own Food Forest</h2>
+        <p>Use our interactive tool to plan your food forest based on your local climate and soil conditions.</p>
+        
+        <label for="climate">Choose your climate:</label>
+        <select id="climate">
+            <option value="tropical">Tropical</option>
+            <option value="temperate">Temperate</option>
+            <option value="arid">Arid</option>
+            <option value="cold">Cold</option>
+        </select>
+        
+        <button onclick="generatePlan()">Generate Food Forest Plan</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <div class="section">
+        <h2>Join the Movement</h2>
+        <p>Connect with a global network of food forest enthusiasts, share your progress, and learn from others.</p>
+    </div>
+</div>
+
+<script>
+    function generatePlan() {
+        const climate = document.getElementById('climate').value;
+        const resultsDiv = document.getElementById('results');
+        let suggestions = "";
+
+        const plantRecommendations = {
+            tropical: ["Banana", "Coconut", "Papaya", "Cassava", "Mango"],
+            temperate: ["Apple", "Walnut", "Blueberry", "Chestnut", "Hazelnut"],
+            arid: ["Date Palm", "Aloe Vera", "Fig", "Mesquite", "Pomegranate"],
+            cold: ["Hazelnut", "Siberian Pea Shrub", "Elderberry", "Chokecherry", "Spruce"]
+        };
+
+        if (plantRecommendations[climate]) {
+            suggestions = `<h3>Recommended Plants for ${climate} Climate:</h3><ul>` +
+                plantRecommendations[climate].map(plant => `<li>${plant}</li>`).join('') +
+                "</ul>";
+        } else {
+            suggestions = "<p>No recommendations available for this selection.</p>";
+        }
+
+        resultsDiv.innerHTML = suggestions;
+    }
+</script>
+
+</body>
+</html>
